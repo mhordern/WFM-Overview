@@ -12,15 +12,15 @@
         }
 
         :root {
-            --primary-color: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary-color: #8b5cf6;
-            --accent-color: #ec4899;
-            --bg-color: #f8fafc;
+            --primary-color: #0C4A7D;
+            --primary-dark: #002747;
+            --secondary-color: #00B69F;
+            --accent-color: #6fb4e3;
+            --bg-color: #F5F5F5;
             --card-bg: #ffffff;
-            --text-primary: #1e293b;
+            --text-primary: #002747;
             --text-secondary: #64748b;
-            --border-color: #e2e8f0;
+            --border-color: #CFD1D1;
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
@@ -49,7 +49,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="%236366f1"/><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="%230C4A7D"/><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
             z-index: 0;
         }
 
@@ -182,6 +182,91 @@
 
         .card-link:active {
             transform: scale(0.98);
+        }
+
+        /* Ideas Section */
+        .ideas-section {
+            margin-top: 80px;
+        }
+
+        .ideas-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .idea-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 2px solid var(--border-color);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .idea-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+        }
+
+        .idea-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent-color);
+        }
+
+        .idea-number {
+            font-weight: 700;
+            color: var(--accent-color);
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .idea-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+            flex-grow: 1;
+        }
+
+        .idea-votes {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .view-all-ideas {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            color: white;
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 40px;
+            width: fit-content;
+        }
+
+        .view-all-ideas:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(236, 72, 153, 0.4);
         }
 
         /* Modal Styles */
@@ -368,6 +453,10 @@
                 padding: 40px 15px;
             }
 
+            .ideas-container {
+                padding: 30px 20px;
+            }
+
             .cards-grid {
                 gap: 20px;
             }
@@ -397,7 +486,6 @@
         .demo-card:nth-child(2) { animation-delay: 0.2s; }
         .demo-card:nth-child(3) { animation-delay: 0.3s; }
         .demo-card:nth-child(4) { animation-delay: 0.4s; }
-        .demo-card:nth-child(5) { animation-delay: 0.5s; }
 
         /* Badge */
         .badge {
@@ -452,7 +540,7 @@
                     <div class="card-icon">📊</div>
                     <h3 class="card-title">Dynamic Minimum Staffing Levels</h3>
                     <p class="card-description">Automatically adjust minimum staffing requirements based on demand patterns, peak hours, and business analytics for optimal coverage.</p>
-                    <a href="https://app.arcade.software/share/n0zZUCYNpkuffTOc75J1" class="card-link" target="_blank">View Demo</a>
+                    <a href="#" class="card-link">View Demo</a>
                 </div>
 
                 <!-- Fourth <> Limber Integration -->
@@ -491,7 +579,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 WFM Product Roadmap. Hosted on GitHub.</p>
+        <p>&copy; 2026 Product Roadmap. Hosted on GitHub.</p>
     </footer>
 
     <script>
