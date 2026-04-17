@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fourth Product Roadmap and Demos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0C4A7D;
+            --primary-dark: #002747;
+            --secondary-color: #00B69F;
+            --accent-color: #6fb4e3;
+            --bg-color: #F5F5F5;
+            --card-bg: #ffffff;
+            --text-primary: #002747;
+            --text-secondary: #64748b;
+            --border-color: #CFD1D1;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Header & Hero Section */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="%230C4A7D"/><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
+            z-index: 0;
+        }
+
+        header > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+        }
+
+        .header-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .stat-item {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            display: block;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 50px;
+            color: var(--text-primary);
+            position: relative;
+            display: block;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 6px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            border-radius: 3px;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            margin-bottom: 80px;
+        }
+
+        /* Product Card */
+        .product-card {
+            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(15, 182, 159, 0.03) 100%);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+        }
+
+        .product-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 182, 159, 0.1) 0%, transparent 70%);
+            transition: all 0.4s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-16px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(12, 74, 125, 0.2);
+            border-color: var(--secondary-color);
+        }
+
+        .product-card:hover::after {
+            top: -25%;
+            right: -25%;
+        }
+
+        .product-card:active {
+            transform: translateY(-10px) scale(1.01);
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            transition: all 0.4s ease;
+        }
+
+        .product-card:hover .card-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            flex-grow: 1;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-link-text {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            width: fit-content;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 0.5px;
+        }
+
+        .product-card:hover .card-link-text {
+            transform: translateX(8px);
+            box-shadow: 0 8px 24px rgba(0, 182, 159, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-primary);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 80px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+                margin-bottom: 30px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 40px 15px;
+            }
+
+            .cards-grid {
+                gap: 30px;
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                padding: 50px 20px;
+            }
+
+            .card-title {
+                font-size: 1.5rem;
+            }
+
+            .card-icon {
+                font-size: 3.5rem;
+            }
+
+            .product-card {
+                padding: 40px 30px;
+            }
+
+            .header-stats {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.2s; }
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Fourth Product Roadmap and Demos</h1>
+        <p class="subtitle">Explore our innovative solutions across all modules</p>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Product Section -->
+        <section>
+            <h2 class="section-title">Our Products</h2>
+
+            <div class="cards-grid">
+                <!-- Inventory Product -->
+                <a href="Inventory Roadmap.html" class="product-card">
+                    <div class="card-icon">📦</div>
+                    <h3 class="card-title">Inventory Management</h3>
+                    <p class="card-description">Streamline your inventory operations with intelligent tracking, demand forecasting, and automated reordering to optimize stock levels and reduce costs.</p>
+                    <div class="card-link-text">View Roadmap</div>
+                </a>
+
+                <!-- Workforce Management Product -->
+                <a href="WFM Roadmap.html" class="product-card">
+                    <div class="card-icon">⏰</div>
+                    <h3 class="card-title">Workforce Management</h3>
+                    <p class="card-description">Optimize scheduling, manage shift preferences, and automate staffing decisions with AI-powered insights that improve coverage and reduce labour costs.</p>
+                    <div class="card-link-text">View Roadmap</div>
+                </a>
+
+                <!-- Human Capital Management Product -->
+                <a href="HCM Roadmap.html" class="product-card">
+                    <div class="card-icon">👥</div>
+                    <h3 class="card-title">Human Capital Management</h3>
+                    <p class="card-description">Manage your entire employee lifecycle from recruitment through retirement with integrated HR, payroll, and compliance solutions that empower your team.</p>
+                    <div class="card-link-text">View Roadmap</div>
+                </a>
+
+                <!-- Fourth 360 Product -->
+                <a href="https://markgarbacz.github.io/WFM-Overview/fourth360-roadmap.html" class="product-card" target="_blank">
+                    <div class="card-icon">🔄</div>
+                    <h3 class="card-title">Fourth 360</h3>
+                    <p class="card-description">Get a complete view of your workforce with integrated analytics, reporting, and insights across all Fourth modules for better business intelligence.</p>
+                    <div class="card-link-text">View Roadmap</div>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Fourth Product Roadmap. Hosted on GitHub.</p>
+    </footer>
+</body>
+</html>
