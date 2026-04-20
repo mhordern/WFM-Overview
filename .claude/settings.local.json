@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git push *)",
+      "Bash(gh pr create --title 'Add demo and reorganize file structure' --body ' *)"
+    ]
+  }
+}
