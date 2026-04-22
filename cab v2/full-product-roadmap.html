@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fourth Product Roadmap and Demos</title>
+    <title>Product Roadmap - Interactive Demos</title>
     <style>
         * {
             margin: 0;
@@ -68,30 +68,24 @@
         .subtitle {
             font-size: 1rem;
             opacity: 0.95;
-            max-width: 700px;
+            max-width: 600px;
             margin: 0 auto;
             font-weight: 300;
         }
 
-        .header-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            max-width: 900px;
-            margin: 0 auto;
-            margin-top: 40px;
-            text-align: center;
-        }
-
-        .stat-item {
-            font-size: 0.95rem;
+        /* Back Link */
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 20px;
             opacity: 0.9;
+            transition: opacity 0.3s ease;
         }
 
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 800;
-            display: block;
+        .back-link:hover {
+            opacity: 1;
         }
 
         /* Main Container */
@@ -103,25 +97,23 @@
 
         /* Section Titles */
         .section-title {
-            font-size: 2.2rem;
-            font-weight: 800;
+            font-size: 2.5rem;
+            font-weight: 700;
             margin-bottom: 50px;
             color: var(--text-primary);
             position: relative;
-            display: block;
-            text-align: center;
+            display: inline-block;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 6px;
-            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
-            border-radius: 3px;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
         }
 
         /* Cards Grid */
@@ -132,9 +124,9 @@
             margin-bottom: 80px;
         }
 
-        /* Product Card */
-        .product-card {
-            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(15, 182, 159, 0.03) 100%);
+        /* Demo Card */
+        .demo-card {
+            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(0, 182, 159, 0.03) 100%);
             border-radius: 20px;
             padding: 40px 30px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
@@ -145,11 +137,9 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            text-decoration: none;
-            color: inherit;
         }
 
-        .product-card::before {
+        .demo-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -159,7 +149,7 @@
             background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
         }
 
-        .product-card::after {
+        .demo-card::after {
             content: '';
             position: absolute;
             top: -50%;
@@ -170,19 +160,15 @@
             transition: all 0.4s ease;
         }
 
-        .product-card:hover {
-            transform: translateY(-16px) scale(1.02);
+        .demo-card:hover {
+            transform: translateY(-12px) scale(1.02);
             box-shadow: 0 20px 60px rgba(12, 74, 125, 0.2);
             border-color: var(--secondary-color);
         }
 
-        .product-card:hover::after {
+        .demo-card:hover::after {
             top: -25%;
             right: -25%;
-        }
-
-        .product-card:active {
-            transform: translateY(-10px) scale(1.01);
         }
 
         .card-icon {
@@ -192,7 +178,7 @@
             transition: all 0.4s ease;
         }
 
-        .product-card:hover .card-icon {
+        .demo-card:hover .card-icon {
             transform: scale(1.1) rotate(5deg);
         }
 
@@ -215,46 +201,271 @@
             z-index: 2;
         }
 
-        .card-link-text {
+        .card-link {
             display: inline-block;
             background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
             color: white;
             padding: 12px 28px;
             border-radius: 10px;
+            text-decoration: none;
             font-weight: 700;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
             font-size: 0.9rem;
             width: fit-content;
-            transition: all 0.3s ease;
             position: relative;
             z-index: 2;
             letter-spacing: 0.5px;
         }
 
-        .product-card:hover .card-link-text {
+        .card-link:hover {
             transform: translateX(8px);
             box-shadow: 0 8px 24px rgba(0, 182, 159, 0.4);
         }
 
-        /* Prototype Card Special Styling */
-        .prototype-card {
-            background: linear-gradient(135deg, #6fb4e3 0%, rgba(107, 180, 227, 0.1) 100%) !important;
-            border: 2px solid #6fb4e3 !important;
+        .card-link:active {
+            transform: translateX(4px);
+        }
+
+        /* Ideas Section */
+        .ideas-section {
+            margin-top: 80px;
+        }
+
+        .ideas-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .idea-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 2px solid var(--border-color);
+            cursor: pointer;
             position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
-        .prototype-card::before {
-            background: linear-gradient(90deg, #6fb4e3, #00B69F) !important;
-            height: 6px !important;
+        .idea-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
         }
 
-        .prototype-card:hover {
-            transform: translateY(-18px) scale(1.03) !important;
-            box-shadow: 0 25px 70px rgba(107, 180, 227, 0.3) !important;
-            border-color: #6fb4e3 !important;
+        .idea-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent-color);
         }
 
-        .prototype-card .card-icon {
-            filter: brightness(1.1);
+        .idea-number {
+            font-weight: 700;
+            color: var(--accent-color);
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .idea-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+            flex-grow: 1;
+        }
+
+        .idea-votes {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .view-all-ideas {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            color: white;
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 40px;
+            width: fit-content;
+        }
+
+        .view-all-ideas:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(236, 72, 153, 0.4);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: var(--bg-color);
+            padding: 50px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 1200px;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .modal-header h2 {
+            font-size: 2.2rem;
+            color: var(--text-primary);
+        }
+
+        .close-btn {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--text-secondary);
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background-color: var(--border-color);
+            color: var(--text-primary);
+            transform: rotate(90deg);
+        }
+
+        .ideas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .idea-item-card {
+            background: white;
+            padding: 18px;
+            border-radius: 12px;
+            border-left: 4px solid #f59e0b;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .idea-item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .idea-item-card.planned {
+            border-left-color: #10b981;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(16, 185, 129, 0.02));
+        }
+
+        .idea-item-number {
+            font-weight: 700;
+            color: var(--accent-color);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .idea-item-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+
+        .idea-item-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            flex-grow: 1;
+            line-height: 1.5;
+        }
+
+        .idea-item-votes {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.95rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-left: 10px;
         }
 
         /* Footer */
@@ -269,175 +480,33 @@
         }
 
         /* Responsive Design */
-
-        /* Large Desktop (1600px+) */
-        @media (min-width: 1600px) {
-            .cards-grid {
-                grid-template-columns: repeat(5, 1fr);
-                gap: 30px;
-            }
-        }
-
-        /* Desktop (1200px - 1599px) */
-        @media (max-width: 1599px) and (min-width: 1200px) {
+        @media (max-width: 768px) {
             h1 {
-                font-size: 2.3rem;
-            }
-
-            .cards-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                gap: 25px;
-            }
-        }
-
-        /* Tablet (768px - 1199px) */
-        @media (max-width: 1199px) and (min-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            .subtitle {
-                font-size: 0.95rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .container {
-                padding: 50px 30px;
-            }
-
-            .cards-grid {
-                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-                gap: 20px;
-            }
-
-            .card-icon {
-                font-size: 3rem;
-            }
-
-            .card-title {
-                font-size: 1.2rem;
-            }
-
-            .card-description {
-                font-size: 0.85rem;
-            }
-
-            .product-card {
-                padding: 30px 25px;
-            }
-        }
-
-        /* Mobile (max-width: 767px) */
-        @media (max-width: 767px) {
-            h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
             .subtitle {
                 font-size: 1rem;
-                margin-bottom: 25px;
             }
 
             .section-title {
-                font-size: 1.6rem;
-                margin-bottom: 30px;
+                font-size: 1.8rem;
             }
 
             .container {
-                padding: 35px 15px;
+                padding: 40px 15px;
+            }
+
+            .ideas-container {
+                padding: 30px 20px;
             }
 
             .cards-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 15px;
-                margin-bottom: 60px;
+                gap: 20px;
             }
 
             header {
                 padding: 40px 20px;
-            }
-
-            .card-title {
-                font-size: 1rem;
-            }
-
-            .card-icon {
-                font-size: 2.5rem;
-                margin-bottom: 15px;
-            }
-
-            .card-description {
-                font-size: 0.8rem;
-                margin-bottom: 15px;
-                line-height: 1.5;
-            }
-
-            .product-card {
-                padding: 25px 20px;
-                border-radius: 16px;
-            }
-
-            .card-link-text {
-                padding: 10px 20px;
-                font-size: 0.8rem;
-            }
-
-            .header-stats {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-        }
-
-        /* Small Mobile (max-width: 480px) */
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.6rem;
-                margin-bottom: 10px;
-            }
-
-            .subtitle {
-                font-size: 0.9rem;
-                margin-bottom: 20px;
-            }
-
-            .section-title {
-                font-size: 1.4rem;
-                margin-bottom: 25px;
-            }
-
-            .container {
-                padding: 25px 12px;
-            }
-
-            .cards-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-                margin-bottom: 50px;
-            }
-
-            header {
-                padding: 30px 15px;
-            }
-
-            .card-title {
-                font-size: 0.95rem;
-            }
-
-            .card-icon {
-                font-size: 2rem;
-                margin-bottom: 12px;
-            }
-
-            .product-card {
-                padding: 20px 15px;
-            }
-
-            .card-description {
-                font-size: 0.75rem;
-                margin-bottom: 12px;
             }
         }
 
@@ -453,78 +522,173 @@
             }
         }
 
-        .product-card {
+        .demo-card {
             animation: fadeInUp 0.6s ease-out;
         }
 
-        .product-card:nth-child(1) { animation-delay: 0.1s; }
-        .product-card:nth-child(2) { animation-delay: 0.2s; }
-        .product-card:nth-child(3) { animation-delay: 0.3s; }
-        .product-card:nth-child(4) { animation-delay: 0.4s; }
-        .product-card:nth-child(5) { animation-delay: 0.5s; }
+        .demo-card:nth-child(1) { animation-delay: 0.1s; }
+        .demo-card:nth-child(2) { animation-delay: 0.2s; }
+        .demo-card:nth-child(3) { animation-delay: 0.3s; }
+        .demo-card:nth-child(4) { animation-delay: 0.4s; }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <h1>Fourth Product Roadmap and Demos</h1>
-        <p class="subtitle">Explore our innovative solutions across all modules</p>
+        <a href="full-product-roadmap.html" class="back-link">← Back to All Products</a>
+        <h1>WFM Product Roadmap and Demos</h1>
+        <p class="subtitle">Explore our upcoming features and innovations</p>
     </header>
 
     <!-- Main Content -->
     <div class="container">
-        <!-- Product Section -->
+        <!-- Demo Section -->
         <section>
-            <h2 class="section-title">Our Products</h2>
+            <h2 class="section-title">Interactive Demos</h2>
 
             <div class="cards-grid">
-                <!-- Manager App Prototype -->
-                <a href="manager-app-prototype/index.html" class="product-card prototype-card">
-                    <div class="card-icon">👔</div>
-                    <h3 class="card-title">Manager App Prototype</h3>
-                    <p class="card-description">Explore interactive prototypes and design mockups for the next-generation manager application interface and user workflows.</p>
-                    <div class="card-link-text">View Prototype</div>
-                </a>
-
-                <!-- Fourth 360 Product -->
-                <a href="fourth360-roadmap.html" class="product-card">
-                    <div class="card-icon">🔄</div>
-                    <h3 class="card-title">Fourth 360</h3>
-                    <p class="card-description">Get a complete view of your workforce with integrated analytics, reporting, and insights across all Fourth modules for better business intelligence.</p>
-                    <div class="card-link-text">View Roadmap</div>
-                </a>
-
-                <!-- Inventory Product -->
-                <a href="Inventory Roadmap.html" class="product-card">
-                    <div class="card-icon">📦</div>
-                    <h3 class="card-title">Inventory Management</h3>
-                    <p class="card-description">Streamline your inventory operations with intelligent tracking, demand forecasting, and automated reordering to optimize stock levels and reduce costs.</p>
-                    <div class="card-link-text">View Roadmap</div>
-                </a>
-
-                <!-- Workforce Management Product -->
-                <a href="WFM Roadmap.html" class="product-card">
+                <!-- Auto Scheduling Demo -->
+                <div class="demo-card">
+                    <span class="badge">Available</span>
                     <div class="card-icon">⏰</div>
-                    <h3 class="card-title">Workforce Management</h3>
-                    <p class="card-description">Optimize scheduling, manage shift preferences, and automate staffing decisions with AI-powered insights that improve coverage and reduce labour costs.</p>
-                    <div class="card-link-text">View Roadmap</div>
-                </a>
+                    <h3 class="card-title">Auto Scheduling Demo</h3>
+                    <p class="card-description">Intelligently automate your shift scheduling with AI-powered optimization that considers employee preferences, skills, and business needs.</p>
+                    <a href="https://app.arcade.software/share/2ebfHuaZxnvAnbzfP7vF" class="card-link">View Demo</a>
+                </div>
 
-                <!-- Human Capital Management Product -->
-                <a href="HCM Roadmap.html" class="product-card">
+                <!-- Shift Management Demo -->
+                <div class="demo-card">
+                    <span class="badge">Available</span>
                     <div class="card-icon">👥</div>
-                    <h3 class="card-title">Human Capital Management</h3>
-                    <p class="card-description">Manage your entire employee lifecycle from recruitment through retirement with integrated HR, payroll, and compliance solutions that empower your team.</p>
-                    <div class="card-link-text">View Roadmap</div>
-                </a>
+                    <h3 class="card-title">Shift Management & Preferences</h3>
+                    <p class="card-description">Empower your team to manage their own shift preferences and availability with an intuitive interface that respects their scheduling needs.</p>
+                    <a href="https://app.arcade.software/share/ERCNcONLimpAp2dig7F9" class="card-link">View Demo</a>
+                </div>
 
+                <!-- Dynamic Minimum Staffing Demo -->
+                <div class="demo-card">
+                    <span class="badge">Available</span>
+                    <div class="card-icon">📊</div>
+                    <h3 class="card-title">Dynamic Minimum Staffing Levels</h3>
+                    <p class="card-description">Automatically adjust minimum staffing requirements based on demand patterns, peak hours, and business analytics for optimal coverage.</p>
+                    <a href="https://app.arcade.software/share/n0zZUCYNpkuffTOc75J1" class="card-link">View Demo</a>
+                </div>
+
+                <!-- Fourth <> Limber Integration -->
+                <div class="demo-card">
+                    <span class="badge">Available</span>
+                    <div class="card-icon">🔗</div>
+                    <h3 class="card-title">Fourth <> Limber Integration</h3>
+                    <p class="card-description">Fulfil shifts with Limber's pool of workers. Seamlessly integrate external staffing solutions to optimize coverage and reduce scheduling gaps.</p>
+                    <a href="https://app.arcade.software/share/Lke8y7rTwQq6pk3dFLhM" class="card-link">View Demo</a>
+                </div>
+
+                <!-- Top Ideas Card -->
+                <div class="demo-card">
+                    <span class="badge">Community</span>
+                    <div class="card-icon">💡</div>
+                    <h3 class="card-title">Top Ideas</h3>
+                    <p class="card-description">Explore the top 10 ideas from our community. Vote on features you'd like to see, and help shape the future of our platform.</p>
+                    <a href="#" class="card-link" onclick="openIdeasModal(); return false;">View Ideas</a>
+                </div>
             </div>
         </section>
     </div>
 
+    <!-- Ideas Modal -->
+    <div id="ideasModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Top 10 Ideas From Our Community</h2>
+                <button class="close-btn" onclick="closeIdeasModal()">&times;</button>
+            </div>
+            <div class="ideas-grid" id="ideasGrid">
+                <!-- Ideas will be populated here -->
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Fourth Product Roadmap.</p>
+        <p>&copy; 2026 WFM Product Roadmap.</p>
     </footer>
+
+    <script>
+        // Top 10 Ideas Data
+        const topIdeas = [
+            { id: 1, title: 'T&A: option for scheduled start time vs actual sign-out', description: 'Display scheduled start time alongside actual sign-out so variances are immediately visible.', votes: 16 },
+            { id: 2, title: 'Young Workers: weekly hours restriction', description: 'Add 40-hour weekly cap as a hard restriction.', votes: 16, planned: 'Q2 CY26' },
+            { id: 3, title: 'T&A over/under-pay visual alerts', description: 'Colour-coded alerts when pay doesn\'t match attendance.', votes: 15 },
+            { id: 4, title: 'Young Workers: prevent scheduling outside legal working times', description: 'Block scheduling outside UK legal working times.', votes: 14, planned: 'Q2 CY26' },
+            { id: 5, title: 'Schedule warnings specific to young workers', description: 'Age-specific warnings for under-18 scheduling.', votes: 13, planned: 'Q2 CY26' },
+            { id: 6, title: 'T&A Breaks Data in analytics', description: 'Add break time visibility to explain variances.', votes: 13 },
+            { id: 7, title: 'Hard restrictions for young worker rest periods', description: 'Enforce rest periods as hard rules.', votes: 13, planned: 'Q2 CY26' },
+            { id: 8, title: 'Scheduler audit trail: who added/changed/removed shifts', description: 'Add full audit trail for shift changes.', votes: 11 },
+            { id: 9, title: 'My Schedules: show holidays on the app', description: 'Include holidays in app schedule view.', votes: 7 }
+        ];
+
+        // Open Ideas Modal
+        function openIdeasModal() {
+            const modal = document.getElementById('ideasModal');
+            modal.classList.add('active');
+            populateIdeasGrid();
+        }
+
+        // Close Ideas Modal
+        function closeIdeasModal() {
+            const modal = document.getElementById('ideasModal');
+            modal.classList.remove('active');
+        }
+
+        // Populate Ideas Grid
+        function populateIdeasGrid() {
+            const ideasGrid = document.getElementById('ideasGrid');
+            ideasGrid.innerHTML = topIdeas.map((idea, index) => `
+                <div class="idea-item-card ${idea.planned ? 'planned' : ''}">
+                    <div class="idea-item-number">Idea #${idea.id}</div>
+                    <h3 class="idea-item-title">
+                        ${idea.title}
+                        ${idea.planned ? `<span class="status-badge" style="background: #3b82f6;">${idea.planned}</span>` : ''}
+                    </h3>
+                    <p class="idea-item-description">${idea.description}</p>
+                    <div class="idea-item-votes">👍 ${idea.votes} votes</div>
+                </div>
+            `).join('');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('ideasModal');
+            if (event.target === modal) {
+                closeIdeasModal();
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update View Ideas button
+            const viewIdeasBtn = document.querySelector('.view-all-ideas');
+            if (viewIdeasBtn) {
+                viewIdeasBtn.onclick = function(e) {
+                    e.preventDefault();
+                    openIdeasModal();
+                };
+            }
+        });
+    </script>
 </body>
 </html>
